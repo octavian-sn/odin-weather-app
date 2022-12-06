@@ -1,0 +1,127 @@
+body {
+  background-image: url("./media/default.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#container {
+  padding: 8px;
+  margin: 16px;
+  width: 600 rem;
+  height: fit-content;
+  /* background-color: rgba(0, 0, 0, 0.267); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+#search{
+  padding: 12px;
+  width: 12rem;
+  border-radius: 6px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.432);
+  color: white;
+  font-size: 1.2rem;
+  outline: none;
+  display: block;
+  text-align: center;
+}
+::placeholder{
+  color: white;
+}
+#weather{
+  background-color: rgba(0, 0, 0, 0.432);
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#header {
+  display: flex;
+  gap: 2rem;
+  /* justify-content: space-between; */
+  /* padding-right: 2rem; */
+  font-weight: 600;
+}
+#country,
+#region {
+  font-size: 1.5rem;
+}
+#header div div {
+  margin-bottom: 6px;
+}
+#temp-details{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+#temp-details div {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+#main-temp{
+  border-right: 2px solid white;
+  display: flex;
+}
+#temp {
+  font-size: 7rem;
+}
+#main-temp .unit {
+  font-size: 1.4rem;
+}
+#other-temp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#other-temp div {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+#other-temp div label {
+  font-size: 1.2rem;
+}
+#other-temp div label + span {
+  font-size: 1.5rem;
+}
+#other-temp div span + span {
+  align-self: flex-start;
+}
+.unit {
+  font-size: 0.6rem;
+}
+#other-details {
+  display: flex;
+}
+#other-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#other-details div div {
+  width: 167px;
+  padding-left: 6px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: min-content 1fr;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+  column-gap: 6px;
+}
+#other-details div div label {
+  font-size: 0.7rem;
+}
+#other-details div div span {
+  font-size: 1.6rem;
+  grid-column: 2 / 3;
+}
+#other-details div div img {
+  grid-row: 1 / 3;
+}
