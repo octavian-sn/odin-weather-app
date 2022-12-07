@@ -10,11 +10,9 @@ body {
   padding: 8px;
   margin: 16px;
   width: 600 rem;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 2rem;
 }
 #search {
@@ -138,4 +136,27 @@ body {
 }
 #other-details div div img {
   grid-row: 1 / 3;
+}
+/* FOOTER */
+#footer {
+  width: 100vw;
+  height: 44px;
+  background-color: var(--dark-color);
+}
+.git {
+  text-shadow: none;
+  margin-top: auto;
+  font-family: 'myFont';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 10px;
+  font-weight:600;
+  color: var(--white-color);
+  margin-top: 6px;
+}
+#git-hub {
+  height: auto;
 }
