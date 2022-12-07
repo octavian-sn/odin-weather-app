@@ -1,18 +1,21 @@
+// Fetch data and render it
 const getWeather = async (city = "bucharest") => {
   try {
-    const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=4582435a7f2223f287d52a8bb97ca5e6&units=metric`,
+    const request = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=4582435a7f2223f287d52a8bb97ca5e6&units=metric`,
       { mode: "cors" }
     );
     const response = await request.json();
-    processData(response)
+    const newData = processData(response);
+    displayData(newData);
   } catch {
-    console.log('yes')
+    console.log("yes");
   }
 };
 
+// Process Sunrise and Sundown times
 const sunSetRis = (a) => {
-  let timeStamp = a;
-  let date = new Date(timeStamp * 1000);
+  let date = new Date(a * 1000);
   let hour = date.getHours();
   let minute = date.getMinutes();
   if (hour.toString().length === 1) {
@@ -22,30 +25,71 @@ const sunSetRis = (a) => {
   return time;
 };
 
-const processData = async (data) => {
+// Create an object with necessary data from the fetch
+const processData = (data) => {
   const information = {
-    short: data.weather[0].description,
     icon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
-    country: data.sys.country + ', ',
-    city: data.name,
+    main: data.weather[0].description,
+    country: data.sys.country + ", ",
+    region: data.name,
     temp: data.main.temp,
-    feels: data.main.feels_like,
-    max: data.main.temp_max,
-    min: data.main.temp_min,
-    wind: data.wind.speed + ' m/s',
-    humidity: data.main.humidity + ' %',
+    feel: data.main.feels_like,
+    high: data.main.temp_max,
+    low: data.main.temp_min,
+    wind: data.wind.speed + " m/s",
+    humidity: data.main.humidity + " %",
     up: sunSetRis(data.sys.sunrise),
     down: sunSetRis(data.sys.sunset),
   };
-  console.log(data);
-  console.log(information);
+  return information;
 };
 
-const search = document.querySelector('#search');
-search.addEventListener('keypress', (e)=> {
-  if (e.key === 'Enter') {
-    getWeather(search.value)
+// Display weather data
+const displayData = (obj) => {
+  const icon = document.getElementById("icon");
+  const main = document.getElementById("main");
+  const country = document.getElementById("country");
+  const region = document.getElementById("region");
+  const temp = document.getElementById("temp");
+  const feel = document.getElementById("feel");
+  const high = document.getElementById("high");
+  const low = document.getElementById("low");
+  const wind = document.getElementById("wind");
+  const humidity = document.getElementById("humidity");
+  const up = document.getElementById("up");
+  const down = document.getElementById("down");
+  const fields = [
+    main,
+    country,
+    region,
+    temp,
+    feel,
+    high,
+    low,
+    wind,
+    humidity,
+    up,
+    down,
+  ];
+  // Loop through fields and object data and fill in if they match
+  fields.forEach((field) => {
+    for (const key in obj) {
+      if (key == field.id) {
+        field.innerText = obj[key];
+      }
+    }
+  });
+  // Change Icon
+  icon.src = obj.icon;
+};
+
+// Search when pressing enter
+const search = document.querySelector("#search");
+search.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    getWeather(search.value);
   }
 });
 
-
+// Default search on city of Sibiu from Romania
+getWeather("sibiu");
