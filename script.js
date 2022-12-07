@@ -83,6 +83,34 @@ const displayData = (obj) => {
   icon.src = obj.icon;
 };
 
+const toFahrenheit = a => {
+  let value = (a * 1.8) + 32;
+  return Math.floor(value * 100) / 100
+}
+const toCelsius = b => {
+  let value = (b - 32) * 0.5556;
+  return Math.floor(value * 100) / 100
+}
+
+const chageMeasureUnit = () => {
+  const control = document.querySelector('#temp').nextElementSibling;
+  const units = document.querySelectorAll('.unit');
+  const temperatures = document.querySelectorAll('.temperature');
+  temperatures.forEach(temp => {
+    let value = temp.innerText;
+    console.log(control.innerText);
+    control.innerText === '℃' ? temp.innerText = toFahrenheit(value) : temp.innerText = toCelsius(value);
+  })
+  units.forEach(unit => {
+    unit.innerText === '℃' ? unit.innerText = '℉' : unit.innerText = '℃';
+  })
+}
+
+const changeUnit = document.getElementById('unit-change');
+changeUnit.addEventListener('click', ()=> {
+  chageMeasureUnit();
+})
+
 // Search when pressing enter
 const search = document.querySelector("#search");
 search.addEventListener("keypress", (e) => {

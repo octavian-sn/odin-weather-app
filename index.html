@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="container">
-      <input type="text" id="search" placeholder="Search location" />
+      <input type="text" id="search" placeholder="Input location and press Enter" />
       <div id="weather">
         <div id="header">
           <div>
@@ -26,26 +26,27 @@
               id="icon"
             />
           </div>
+          <button class="unit" id="unit-change">&#x2103;</button>
         </div>
         <div id="temp-details">
           <div id="main-temp">
-            <span id="temp"></span>
+            <span id="temp" class="temperature"></span>
             <span class="unit">&#x2103;</span>
           </div>
           <div id="other-temp">
             <div>
               <label for="feel">Feels like:</label>
-              <span id="feel"></span>
+              <span id="feel" class="temperature"></span>
               <span class="unit">&#x2103;</span>
             </div>
             <div>
               <label for="high">High:</label>
-              <span id="high"></span>
+              <span id="high" class="temperature"></span>
               <span class="unit">&#x2103;</span>
             </div>
             <div>
               <label for="low">Low:</label>
-              <span id="low"></span>
+              <span id="low" class="temperature"></span>
               <span class="unit">&#x2103;</span>
             </div>
           </div>
